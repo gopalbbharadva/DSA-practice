@@ -47,11 +47,12 @@ const markZerosUsingSets = () => {
   }
 }
 markZerosUsingSets()
-console.log(arr, 'arr')
+// console.log(arr, 'arr')
 // **********
 
 // ***********
 // 2nd SOLUTION
+// Here the time complexity is high
 // **********
 const arr2 = [
   [1, 1, 1, 1],
@@ -114,5 +115,43 @@ const rowLength = arr2.length
 const columnLength = arr2[0].length
 
 checkForZeroAndAddMinusOne(rowLength, columnLength)
-console.log(arr2, 'arr')
+// console.log(arr2, 'arr')
 // *************
+
+// 3rd SOLUTION:
+// Here space complexity is high as we need to maintain two arrays to keep track of rows and columns count.
+// ***********
+
+const sampleArray = [
+  [1, 1, 1, 1],
+  [1, 0, 1, 1],
+]
+
+const rowArr = []
+const columnArr = []
+
+for (let i = 0; i < sampleArray.length; i++) {
+  for (let j = 0; j < sampleArray[0].length; j++) {
+    if (sampleArray[i][j] === 0) {
+      if (!rowArr.includes(i)) {
+        rowArr.push(i)
+      }
+      if (!columnArr.includes(j)) {
+        columnArr.push(j)
+      }
+    }
+  }
+}
+
+for (let i = 0; i < sampleArray.length; i++) {
+  for (let j = 0; j < sampleArray[0].length; j++) {
+    if (rowArr.includes(i)) {
+      sampleArray[i][j] = 0
+    }
+    if (columnArr.includes(j)) {
+      sampleArray[i][j] = 0
+    }
+  }
+}
+
+console.log(sampleArray, 'track')
