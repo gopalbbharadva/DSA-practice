@@ -157,3 +157,6 @@ for (let i = 0; i < sampleArray.length; i++) {
 console.log(sampleArray, 'track')
 // ***************
 
+// Program to generate Pascal’s Triangle
+// PROBLEM : Given a matrix if an element in the matrix is 0 then you will have
+// to set its entire column and row to 0 and then return the matrix.
