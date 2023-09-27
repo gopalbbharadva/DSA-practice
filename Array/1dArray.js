@@ -62,3 +62,70 @@ const isArraySortedWithLessTimeComplexity = () => {
 // Space Complexity: O(1)
 
 console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
+
+// ***********************************************************************
+
+// Find Second Smallest and Second Largest Element in an array
+// PROBLEM: Problem Statement: Given an array, find the second smallest and second largest element in the array.
+// Print ‘-1’ in the event that either of them doesn’t exist.
+const demoArray = [23, 45, 2, 11, 400, 77, 10]
+const findTheSmallestAndLargestElement = () => {
+  let max = demoArray[0]
+  let min = demoArray[0]
+  for (let i = 0; i < demoArray.length; i++) {
+    if (max < demoArray[i]) {
+      max = demoArray[i]
+    }
+    if (min > demoArray[i]) {
+      min = demoArray[i]
+    }
+  }
+  return { max, min }
+}
+
+const findTheSecondLargestAndSecondSmallestElement = () => {
+  const { max, min } = findTheSmallestAndLargestElement()
+  let secondLargest = arr[0]
+  let secondSmallest = arr[0]
+  for (let i = 0; i < demoArray.length; i++) {
+    if (demoArray[i] > secondLargest && demoArray[i] !== max) {
+      secondLargest = demoArray[i]
+    }
+    if (demoArray[i] < secondSmallest && demoArray[i] !== min) {
+      secondSmallest = demoArray[i]
+    }
+  }
+  return secondLargest
+}
+
+// Finding second largest by calculating the difference.
+// Not using currently
+const findTheSecondLargestElement = () => {
+  const { max } = findTheSmallestAndLargestElement()
+  let diffForMax = max - demoArray[0]
+  let secondLargestElement = max
+  for (let i = 0; i < demoArray.length; i++) {
+    let currentDiffForMax = 0
+    if (demoArray[i] < max) {
+      currentDiffForMax = max - demoArray[i]
+    }
+    if (currentDiffForMax <= diffForMax && demoArray[i] !== max) {
+      diffForMax = currentDiffForMax
+      secondLargestElement = demoArray[i]
+    }
+  }
+  console.log(secondLargestElement, 'largestElement')
+}
+
+// Finding second smallest by calculating the difference.
+// Not using currently
+const findTheSecondSmallestElement = () => {
+  let currentDiffForMin = 0
+  let diffForMin = min - demoArray[0]
+  let secondSmallestElement = min
+  if (currentDiffForMin >= diffForMin && demoArray[i] !== min) {
+    diffForMin = currentDiffForMin
+    secondSmallestElement = demoArray[i]
+  }
+}
+console.log(findTheSecondLargestAndSecondSmallestElement(), 'array ')
