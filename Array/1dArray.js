@@ -13,7 +13,7 @@ const findLargestNumber = () => {
 }
 
 const res = findLargestNumber()
-console.log(res, 'res')
+// console.log(res, 'res')
 
 // Complexity Analysis
 
@@ -49,11 +49,9 @@ const isArraySorted = () => {
 // Approach: Efficient (Single traversal)
 const isArraySortedWithLessTimeComplexity = () => {
   let isSorted = true
-  let j = 1
   for (let i = 0; i < sampleArr.length - 1; i++) {
-    if (sampleArr[i] < sampleArr[j]) break
+    if (sampleArr[i] < sampleArr[i + 1]) break
     isSorted = false
-    j++
   }
   return isSorted
 }
@@ -63,4 +61,4 @@ const isArraySortedWithLessTimeComplexity = () => {
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 
-// console.log(isArraySorted(), 'isArraySorted')
+console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
