@@ -68,6 +68,12 @@ console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
 // Find Second Smallest and Second Largest Element in an array
 // PROBLEM: Problem Statement: Given an array, find the second smallest and second largest element in the array.
 // Print ‘-1’ in the event that either of them doesn’t exist.
+
+// STEPS:
+// - First we will find the first smallest and largest elements.
+// - Then we will again loop through the array.
+// - Here we will use the same logic for finding max and min but this
+// time we will check for max and min and skip if found.
 const demoArray = [23, 45, 2, 11, 400, 77, 10]
 const findTheSmallestAndLargestElement = () => {
   let max = demoArray[0]
@@ -85,8 +91,8 @@ const findTheSmallestAndLargestElement = () => {
 
 const findTheSecondLargestAndSecondSmallestElement = () => {
   const { max, min } = findTheSmallestAndLargestElement()
-  let secondLargest = arr[0]
-  let secondSmallest = arr[0]
+  let secondLargest = demoArray[0]
+  let secondSmallest = demoArray[0]
   for (let i = 0; i < demoArray.length; i++) {
     if (demoArray[i] > secondLargest && demoArray[i] !== max) {
       secondLargest = demoArray[i]
@@ -95,11 +101,11 @@ const findTheSecondLargestAndSecondSmallestElement = () => {
       secondSmallest = demoArray[i]
     }
   }
-  return secondLargest
+  return [secondLargest, secondSmallest]
 }
 
 // Finding second largest by calculating the difference.
-// Not using currently
+// NOTE: Not using currently
 const findTheSecondLargestElement = () => {
   const { max } = findTheSmallestAndLargestElement()
   let diffForMax = max - demoArray[0]
@@ -118,7 +124,7 @@ const findTheSecondLargestElement = () => {
 }
 
 // Finding second smallest by calculating the difference.
-// Not using currently
+// NOTE: Not using currently
 const findTheSecondSmallestElement = () => {
   let currentDiffForMin = 0
   let diffForMin = min - demoArray[0]
@@ -129,3 +135,5 @@ const findTheSecondSmallestElement = () => {
   }
 }
 console.log(findTheSecondLargestAndSecondSmallestElement(), 'array ')
+
+// ************************************************************************
