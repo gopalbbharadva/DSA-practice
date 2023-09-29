@@ -61,7 +61,7 @@ const isArraySortedWithLessTimeComplexity = () => {
 // Time Complexity: O(N)
 // Space Complexity: O(1)
 
-console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
+// console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
 
 // ***********************************************************************
 
@@ -74,7 +74,9 @@ console.log(isArraySortedWithLessTimeComplexity(), 'isArraySorted')
 // - Then we will again loop through the array.
 // - Here we will use the same logic for finding max and min but this
 // time we will check for max and min and skip if found.
-const demoArray = [23, 45, 2, 11, 400, 77, 10]
+
+// Approach: BETTER approach
+const demoArray = [23, 45, 2, 11, 400, 77, 15]
 const findTheSmallestAndLargestElement = () => {
   let max = demoArray[0]
   let min = demoArray[0]
@@ -134,6 +136,36 @@ const findTheSecondSmallestElement = () => {
     secondSmallestElement = demoArray[i]
   }
 }
-console.log(findTheSecondLargestAndSecondSmallestElement(), 'array ')
+// console.log(findTheSecondLargestAndSecondSmallestElement(), 'array ')
+// Complexity Analysis
+
+// Time Complexity: O(N), We do two linear traversals in our array
+// Space Complexity: O(1)
+
+// Approach: OPTIMAL
+const findLargestAndSmallestOptimal = () => {
+  let small = demoArray[0]
+  let secondSmall = demoArray[0]
+  let large = demoArray[0]
+  let secondLarge = demoArray[0]
+  for (let i = 0; i < demoArray.length; i++) {
+    if (demoArray[i] < small) {
+      small = demoArray[i]
+    } else if (demoArray[i] < secondSmall) {
+      secondSmall = demoArray[i]
+    }
+    if (demoArray[i] > large) {
+      large = demoArray[i]
+    } else if (demoArray[i] > secondLarge) {
+      secondLarge = demoArray[i]
+    }
+  }
+  return [secondLarge, secondSmall]
+}
+console.log(findLargestAndSmallestOptimal())
+// Complexity Analysis
+
+// Time Complexity: O(N), Single-pass solution
+// Space Complexity: O(1)
 
 // ************************************************************************
