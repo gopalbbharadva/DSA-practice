@@ -185,5 +185,9 @@ const linearSearch = (num) => {
   return -1
 }
 console.log(linearSearch(4), 'linear search')
+// Complexity Analysis
+
+// Time Complexity: O(n), where n is the length of the array.
+// Space Complexity: O(1)
 
 // ************************************************************************
