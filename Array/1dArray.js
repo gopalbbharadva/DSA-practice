@@ -191,3 +191,26 @@ console.log(linearSearch(4), 'linear search')
 // Space Complexity: O(1)
 
 // ************************************************************************
+
+// Left Rotate the Array by One
+// PROBLEM : Given an array of N integers, left rotate the array by one place.
+
+// $$$$$$$$$$$$   APPROACH: OPTIMAL
+let arrAfterRotate = [1, 2, 3, 4, 5]
+const rotateArrayByOneIndex = () => {
+  for (let i = 0; i < arrAfterRotate.length; i++) {
+    if (i !== arrAfterRotate.length - 1) {
+      let temp = arrAfterRotate[i]
+      arrAfterRotate[i] = arrAfterRotate[i + 1]
+      arrAfterRotate[i + 1] = temp
+    }
+  }
+  return arrAfterRotate
+}
+
+// Complexity Analysis
+
+// Time Complexity: O(n), as we iterate through the array only once.
+// Space Complexity: O(1) as no extra space is used
+
+console.log(rotateArrayByOneIndex(), 'by index')
