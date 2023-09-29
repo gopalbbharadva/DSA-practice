@@ -28,7 +28,7 @@ const res = findLargestNumber()
 
 const sampleArr = [1, 2, 3, 4, 5]
 
-// Approach: Brute Force
+// $$$$$$$$$$$$    APPROACH: BRUTE FORCE
 const isArraySorted = () => {
   let isSorted = true
   for (let i = 0; i < sampleArr.length; i++) {
@@ -75,7 +75,7 @@ const isArraySortedWithLessTimeComplexity = () => {
 // - Here we will use the same logic for finding max and min but this
 // time we will check for max and min and skip if found.
 
-// Approach: BETTER approach
+// $$$$$$$$$$$$    Approach: BETTER APPROACH
 const demoArray = [23, 45, 2, 11, 400, 77, 15]
 const findTheSmallestAndLargestElement = () => {
   let max = demoArray[0]
@@ -142,7 +142,7 @@ const findTheSecondSmallestElement = () => {
 // Time Complexity: O(N), We do two linear traversals in our array
 // Space Complexity: O(1)
 
-// Approach: OPTIMAL
+// $$$$$$$$$$$$    APPROACH: OPTIMAL APPROACH
 const findLargestAndSmallestOptimal = () => {
   let small = demoArray[0]
   let secondSmall = demoArray[0]
@@ -167,5 +167,23 @@ console.log(findLargestAndSmallestOptimal())
 
 // Time Complexity: O(N), Single-pass solution
 // Space Complexity: O(1)
+
+// ************************************************************************
+// Linear Search in C
+// PROBLEM : Given an array, and an element num
+// the task is to find if num is present in the given array or not.
+// If present print the index of the element or print -1.
+
+// $$$$$$$$$$$$   APPROACH: OPTIMAL
+const demoArrayForLinearSearch = [1, 2, 3, 4, 5]
+const linearSearch = (num) => {
+  for (let i = 0; i < demoArrayForLinearSearch.length; i++) {
+    if (demoArrayForLinearSearch[i] === num) {
+      return i
+    }
+  }
+  return -1
+}
+console.log(linearSearch(4), 'linear search')
 
 // ************************************************************************
