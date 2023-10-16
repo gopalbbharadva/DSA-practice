@@ -162,7 +162,7 @@ const findLargestAndSmallestOptimal = () => {
   }
   return [secondLarge, secondSmall]
 }
-console.log(findLargestAndSmallestOptimal())
+// console.log(findLargestAndSmallestOptimal())
 // Complexity Analysis
 
 // Time Complexity: O(N), Single-pass solution
@@ -184,7 +184,7 @@ const linearSearch = (num) => {
   }
   return -1
 }
-console.log(linearSearch(4), 'linear search')
+// console.log(linearSearch(4), 'linear search')
 // Complexity Analysis
 
 // Time Complexity: O(n), where n is the length of the array.
@@ -213,4 +213,379 @@ const rotateArrayByOneIndex = () => {
 // Time Complexity: O(n), as we iterate through the array only once.
 // Space Complexity: O(1) as no extra space is used
 
-console.log(rotateArrayByOneIndex(), 'by index')
+// console.log('sample')
+// console.log(rotateArrayByOneIndex(), 'by index')
+
+// ****************************************************************************
+
+// Count Maximum Consecutive One’s in the array
+// Problem Statement: Given an array that contains only 1 and 0 return the count of maximum
+// consecutive ones in the array.
+
+const arrayWithZerosAndOne = [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1]
+const findTotalConsecutiveOnesLength = () => {
+  let maxCount = 0
+  let temp = 0
+  for (let i = 0; i < arrayWithZerosAndOne.length; i++) {
+    if (arrayWithZerosAndOne[i] === 1) {
+      temp++
+    } else {
+      temp = 0
+    }
+    if (maxCount < temp) {
+      maxCount = temp
+    }
+  }
+  return maxCount
+}
+
+findTotalConsecutiveOnesLength()
+
+// ****************************************************************************
+
+// Move all Zeros to the end of the array
+// In this article we will learn how to solve the most asked coding interview problem:
+// “Move all Zeros to the end of the array”
+// Problem : You are given an array of integers, your task is to move all the zeros in the array to the end of
+// the array and move non-negative integers to the front by maintaining their order.
+
+const numbersWithZeros = [1, 22]
+
+const moveZerosToTheEnd = () => {
+  let j = 0
+  let isZero = false
+  for (let k = 0; k < numbersWithZeros.length; k++) {
+    if (numbersWithZeros[k] === 0) {
+      isZero = true
+      j = k
+      break
+    }
+  }
+  if (isZero) {
+    for (let i = j + 1; i < numbersWithZeros.length; i++) {
+      if (numbersWithZeros[i] !== 0) {
+        numbersWithZeros[j] = numbersWithZeros[i]
+        numbersWithZeros[i] = 0
+        j = j + 1
+      }
+    }
+  }
+  return numbersWithZeros
+}
+
+// console.log(moveZerosToTheEnd())
+
+// ************************************************************
+
+// Rotate array by K elements
+// Problem : Given an array of integers, rotating array of elements by k elements either left or right.
+
+// const rotationArr = [1, 2, 3, 4, 5, 6, 7]
+const rotationArr = [1, 2, 3, 4, 5]
+
+const rotateArrayByOnePositionToRight = (k = 3) => {
+  let temp = []
+  if (rotationArr.length !== 1) {
+    for (let i = rotationArr.length - k; i < rotationArr.length; i++) {
+      temp.push(rotationArr[i])
+    }
+    console.log(temp, 'temp')
+    console.log(rotationArr, 'rarr')
+    for (let i = rotationArr.length - k - 1; i >= 0; i--) {
+      rotationArr[i + k] = rotationArr[i]
+    }
+    console.log(rotationArr, 'arr')
+    for (let i = 0; i < k; i++) {
+      rotationArr[i] = temp[i]
+    }
+  }
+  console.log(rotationArr, 'arr')
+}
+
+// rotateArrayByOnePositionToRight()
+
+const rotateArrayByKPositionToLeft = (k) => {
+  let temp = []
+  if (rotationArr.length <= 1) {
+    return rotationArr
+  }
+  k = k % rotationArr.length
+  if (k > rotationArr.length) return rotationArr
+  // make an arr of first k elements to the
+  for (let i = 0; i < k; i++) {
+    temp.push(rotationArr[i])
+  }
+  // shift n-k elements to the left
+  for (let i = k; i <= rotationArr.length - 1; i++) {
+    rotationArr[i - k] = rotationArr[i]
+  }
+  // add temp array to last last k elements of rotationArr
+  for (let i = 0; i < temp.length; i++) {
+    rotationArr[rotationArr.length - k + i] = temp[i]
+  }
+  console.log(rotationArr, 'arr')
+}
+
+// rotateArrayByKPositionToLeft(9)
+
+// *************************************************************
+
+// Remove Duplicates in-place from Sorted Array
+// Problem Statement: Given an integer array sorted in non-decreasing order, remove the duplicates
+// in place such that each unique element appears only once. The relative order of the elements should be kept the same.
+
+// const duplicateItemsArr = [1, 1, 2, 2, 2, 3, 3,4,4]
+
+// const getDistinctArray = () => {
+//   let i = 0
+//   for (let j = 0; j < duplicateItemsArr.length; j++) {
+//     if (duplicateItemsArr[i] != duplicateItemsArr[j]) {
+//       i++
+//       duplicateItemsArr[i] = duplicateItemsArr[j]
+//     }
+//   }
+//   console.log(duplicateItemsArr, 'arr')
+// }
+
+// getDistinctArray()
+
+// ******************************************************************
+
+// Find the missing number in an array
+// Problem Statement: Given an integer N and an
+// array of size N-1 containing N-1 numbers between 1 to N. Find the number(between 1 to N), that is not present in the given array.
+
+// Brute force approach
+// const incompleteArr = [1, 0, 4]
+// const makeCompleteArr = () => {
+//   for (let i = 0; i <= incompleteArr.length; i++) {
+//     let flag = 0
+//     for (let j = 0; j < incompleteArr.length; j++) {
+//       if (incompleteArr[j] === i) {
+//         flag = 1
+//         break
+//       }
+//     }
+//     if (flag === 0) {
+//       return i
+//     }
+//   }
+// }
+
+// const res2 = makeCompleteArr()
+// console.log(res2, 'res')
+
+// Better approach using HASHING
+
+// const dummyArr = [2, 1]
+// const findMissingNumber = () => {
+//   const temp = new Array(dummyArr.length + 1).fill(0)
+//   console.log(temp, 'temp')
+//   for (let i = 0; i < dummyArr.length; i++) {
+//     temp[dummyArr[i]]++
+//   }
+//   for (let i = 0; i < temp.length; i++) {
+//     if (temp[i] === 0) return i
+//   }
+// }
+// const result = findMissingNumber()
+// console.log(result, 'result')
+
+// Optimal Approach
+
+// const prevArr = [3, 0, 1, 2]
+
+// const sumTillN = (n) => {
+//   if (n === 0) return 0
+//   else return n + sumTillN(n - 1)
+// }
+
+// const findMissingNumber = () => {
+//   const absoluteSum = sumTillN(prevArr.length)
+//   const wrongSum = sumTillN(Math.max(...prevArr))
+//   const n = 4
+//   return absoluteSum - wrongSum
+// }
+
+// const result = findMissingNumber()
+
+// ********************************************************************
+
+// Find the number that appears once, and the other numbers twice
+// Problem Statement: Given a non-empty array of integers arr,
+// every element appears twice except for one. Find that single one.
+
+// Brute Force approach
+// const prevArr = [1, 3, -1, , 1, -2, -2, 1, 4, 2, 3]
+// const findSingeOccurrenceNumber = () => {
+//   for (let i = 0; i < prevArr.length; i++) {
+//     let count = 0
+//     for (let j = 0; j < prevArr.length; j++) {
+//       if (prevArr[i] === prevArr[j]) {
+//         count++
+//       }
+//     }
+//     if (count === 1) {
+//       return prevArr[i]
+//     }
+//   }
+// }
+// const result = findSingeOccurrenceNumber()
+// console.log(result, 'result')
+
+// Hashing Approach
+
+// const prevArr = [1, 3, -1, , 1, -2, -2, 1, 4, 2, 3]
+// const prevArr = [1, 2, 3, 3, 2]
+
+// const arrayRange = (start, stop, step) =>
+//   Array.from(
+//     { length: (stop - start) / step + 1 },
+//     (value, index) => start + index * step
+//   )
+
+// const findMaxNumber = (arr) => {
+//   let max = 0
+//   for (let i = 0; i < arr.length; i++) {
+//     if (max < arr[i]) {
+//       max = arr[i]
+//     }
+//   }
+//   return max
+// }
+
+// const findMinNumber = (arr) => {
+//   let min = arr[0]
+//   for (let i = 0; i < arr.length; i++) {
+//     if (min > arr[i]) {
+//       min = arr[i]
+//     }
+//   }
+//   return min
+// }
+// findMinNumber([1, 2, 3, 4, 5])
+
+// const findSingleOccurrenceNumber = () => {
+//   const maxNumber = findMaxNumber(prevArr)
+//   const minNumber = findMinNumber(prevArr)
+//   const temp = arrayRange(minNumber, maxNumber, 1)
+//   console.log(temp, 'temp')
+//   for (let i = 0; i <= temp.length; i++) {
+//     console.log(prevArr[i], 'i')
+//     temp[prevArr[i]]++
+//   }
+//   console.log(temp, 'prevArr')
+// }
+
+// findSingleOccurrenceNumber()
+
+// ****************************************************
+
+// Union of Two Sorted Arrays
+// Problem Statement: Given two sorted arrays, arr1, and arr2 of size n and m. Find the union of two sorted arrays.
+// The union of two arrays can be defined as the common and distinct elements in the two arrays.
+// NOTE: Elements in the union should be in ascending order.
+
+// const firstArr = [1, 2, 3, 4, 5, 5]
+// const secondArr = [1, 2, 3, 4, 5, 6]
+
+// const removeDuplicates = (arr) => {
+//   const result = arr.reduce(
+//     (acc, cur) => (acc.find((num) => num === cur) ? acc : [...acc, cur]),
+//     []
+//   )
+//   return result
+// }
+// console.log(removeDuplicates(firstArr), 'first')
+// console.log(removeDuplicates(secondArr), 'second')
+
+// console.log('')
+// const arr1 = [1, 2, 3, 4, 5, 5, 6]
+// const set = new Set(arr1)
+// console.log([...set], 'spread set')
+// console.log(set, 'set')
+// for (let i of set) {
+//   console.log(i, 'i')
+// }
+// for (let i = 0; i < arr1.length; i++) {
+//   map.set()
+//   // map
+// }
+// const sampleArr1 = [1, 2, 3, 4, 5, 5, 6, 6]
+// const sampleArr2 = [1, 3, 4, 5, 5, 7, 8]
+// const map = new Map()
+// let temp = []
+// for (let i = 0; i < sampleArr1.length; i++) {
+//   map.set(sampleArr1[i], i)
+// }
+
+// for (let i = 0; i < sampleArr2.length; i++) {
+//   map.set(sampleArr2[i], i)
+// }
+
+// for (let [value, num] of map) {
+//   temp.push(value)
+// }
+// console.log(temp, 'sam arr 1')
+
+// const map1 = new Map()
+// map1.set(1, '2')
+// map1.set(10, '9')
+// console.log(map1.get(1), 'map1 get')
+
+// for (let j of sampleArr1) {
+//   console.log()
+// }
+// console.log(map1, 'map1')
+
+// console.log(result, 'result')
+
+// const findTheUnionNumbers = () => {
+//   con
+//   // con
+//   // for()
+// }
+
+// ****************************************************
+
+// Two Sum : Check if a pair with given sum exists in Array
+// Problem Statement: Given an array of integers arr[] and an integer target.
+
+// Brute force approach
+// const arr1 = [-1, -1]
+// const target = -2
+
+// const twoSum = () => {
+//   let flag = false
+//   for (let i = 0; i < arr1.length; i++) {
+//     for (let j = i + 1; j < arr1.length; j++) {
+//       if (arr1[i] + arr1[j] === target) {
+//         flag = true
+//         return flag
+//       }
+//     }
+//   }
+//   console.log(flag, 'flag')
+// }
+
+// const result = twoSum()
+// console.log(result, 'result')
+
+// Hashmap approach
+
+const arr1 = [1, 2, 3, 4, 5]
+const map1 = new Map()
+const target = 4
+const twoSum = () => {
+  for (let i = 0; i < arr1.length; i++) {
+    const otherNum = target - arr1[i]
+    if (map1.has(otherNum)) {
+      return [map1.get(otherNum), i]
+    } else {
+      map1.set(arr1[i], i)
+    }
+  }
+}
+
+const result = twoSum()
+console.log(result, 'result')
